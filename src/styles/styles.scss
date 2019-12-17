@@ -1,0 +1,31 @@
+@import 'minicss';
+
+.Header {
+  display: flex;
+  align-items: center;
+  background-color: #cb0000;
+  color: rgba(#fff, 0.9);
+  .logo {
+    padding: 0.5em;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: inherit;
+    &:hover,
+    &:focus {
+      text-decoration: none;
+    }
+  }
+  nav {
+    display: flex;
+    margin-left: 4rem;
+    a {
+      padding: 0.5em 1.5em;
+      color: inherit;
+      border-radius: 3px;
+    }
+    a:hover {
+      text-decoration: none;
+      background-color: rgba(#fff, 0.1);
+    }
+  }
+}
