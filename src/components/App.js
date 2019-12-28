@@ -1,10 +1,10 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
-import DeadEnd from '~/components/DeadEnd';
-import Header from '~/components/Header';
-import Home from '~/components/Home';
-import MemoryGame from '~/components/MemoryGame/MemoryGame';
+import DeadEnd from './DeadEnd';
+import Header from './Header';
+import Home from './Home';
+import MemoryGame from './MemoryGame/MemoryGame';
 
 const App = props => {
   return (
