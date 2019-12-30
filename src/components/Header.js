@@ -5,11 +5,9 @@ const Header = props => {
   return (
     <header className="Header">
       <Link to="/" className="logo">
-        React Games
+        <h1>React Games</h1>
       </Link>
-      <nav>
-        <Link to="/memory-game">Memory Game</Link>
-      </nav>
+      <a href="https://github.com/alex-parra" target="_blank" rel="noopener noreferrer">by Alex Parra</a>
     </header>
   );
 };

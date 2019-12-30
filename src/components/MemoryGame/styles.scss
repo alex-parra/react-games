@@ -19,7 +19,7 @@
   .bottomControls {
     flex: 0 0 auto; min-height: 60px; display: flex; align-items: center; justify-content: center; font-size: 13px;
     button { padding: 5px 1em; margin: 0; }
-    button:not(:hover) { background-color: transparent; }
+    button:not(:hover) { opacity: .6; }
   }
 }
 
@@ -27,14 +27,14 @@
   display: grid; place-items: center; height: 100%;
   > div { display: flex; flex-direction: column; justify-content: center; width: 80%; max-width: 300px; text-align: center; }
   .levels {
-    padding: 5px; border: 1px solid #eee; margin-bottom: 20px; text-align: left; border-radius: 4px; background-color: #f4f4f4;
+    padding: 5px; border: 1px solid #EDF2F7; margin-bottom: 20px; text-align: left; border-radius: 4px; background-color: #F7FAFC;
     h4 { margin: 4px 6px; }
     label { display: flex; align-items: center; cursor: pointer; }
-    label:hover { background-color: #fff; }
+    label:hover { background-color: #90CDF4; }
     label span { flex: 1; padding: 0 10px; }
   }
   button { transition: transform 100ms ease; }
-  button:hover { transform: scale(1.2) rotate(-2deg); }
+  button:hover { transform: scale(1.1) rotate(-1deg); }
 }
 
 .Tiles {
