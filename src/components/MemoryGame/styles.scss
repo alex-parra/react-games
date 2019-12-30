@@ -1,12 +1,111 @@
+.MemoryGame {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #EDF2F7;
+}
+
+.MemoryGame .board {
+  display: flex; flex-direction: column; justify-content: center; width: 80vmin;
+  .topControls {
+    flex: 0 0 auto; display: flex; align-items: flex-end; justify-content: space-between; padding: 5px;
+    > div { flex: 0 0 auto; width: 25%; padding: 0 8px; font-size: 13px; }
+    > div:last-child { text-align: right; }
+    h1 { flex: 0 0 auto; font-size: 24px; margin: 0; }
+  }
+
+  .gameBoard { flex: 0 0 auto; height: 80vmin; background-color: #fff; border-radius: 4px; box-shadow: 0 0 3px rgba(#000, .25); }
+  .bottomControls {
+    flex: 0 0 auto; min-height: 60px; display: flex; align-items: center; justify-content: center; font-size: 13px;
+    button { padding: 5px 1em; margin: 0; }
+    button:not(:hover) { background-color: transparent; }
+  }
+}
+
+.StartScreen {
+  display: grid; place-items: center; height: 100%;
+  > div { display: flex; flex-direction: column; justify-content: center; width: 80%; max-width: 300px; text-align: center; }
+  .levels {
+    padding: 5px; border: 1px solid #eee; margin-bottom: 20px; text-align: left; border-radius: 4px; background-color: #f4f4f4;
+    h4 { margin: 4px 6px; }
+    label { display: flex; align-items: center; cursor: pointer; }
+    label:hover { background-color: #fff; }
+    label span { flex: 1; padding: 0 10px; }
+  }
+  button { transition: transform 100ms ease; }
+  button:hover { transform: scale(1.2) rotate(-2deg); }
+}
 
 .Tiles {
-  display: grid;
-  grid: auto / repeat(var(--tiles, 4), 1fr);
-  grid-gap: 5px;
-  width: 80vh;
-  height: 80vh;
-  margin: 0 auto;
-  .Tile { position: relative; text-align: center; background-color: #eee; }
-  .Tile::before { content: ""; display: block; padding-bottom: 95%; }
-  .Tile i { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 3rem; }
+  display: grid; grid: repeat(var(--tiles, 4), 1fr) / repeat(var(--tiles, 4), 1fr);
+  grid-gap: 5px; padding: 5px; height: 100%;
+
+  .Tile {
+    position: relative; text-align: center; perspective: 500px;
+    .inner { height: 100%; transform-style: preserve-3d; transition: transform 500ms ease; cursor: pointer; }
+    .inner b,
+    .inner i { position: absolute; top: 0; left: 0; right: 0; bottom: 0; display: grid; place-items: center; backface-visibility: hidden; font-size: 4vmin; border-radius: 2px; }
+    .inner b { background-color: #F7FAFC; color: rgba(#000, .1); transition: all 150ms ease; }
+    .inner i { transform: rotateY(180deg); background-color: #2B6CB0; color: rgba(#fff, .9); }
+    &:hover .inner b { background-color: #EDF2F7; box-shadow: inset 0 0 6px rgba(#000, .2); }
+  }
+
+  .Tile.flipped .inner { transform: rotateY(180deg); }
+  .Tile.matched { animation: tada 0.82s cubic-bezier(.36,.07,.19,.97) both; z-index: 99; }
+  .Tile.matched .inner i { background-color: #38A169; box-shadow: 0 0 4px rgba(#000, .3); }
+  .Tile.no-match { animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) 400ms both; }
+  .Tile.no-match .inner i { animation: tileNoMatch 500ms ease 100ms forwards; }
+}
+
+.Finished {
+  display: grid; place-items: center; height: 100%; text-align: center;
+  div { margin: 10px 0 20px; }
+}
+
+@keyframes tileNoMatch {
+  0% { background-color: #2B6CB0; }
+  100% { background-color: #C53030; }
+}
+
+/* https://css-tricks.com/snippets/css/shake-css-keyframe-animation/ */
+@keyframes shake {
+  10%, 90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+
+  20%, 80% {
+    transform: translate3d(2px, 0, 0);
+  }
+
+  30%, 50%, 70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+
+  40%, 60% {
+    transform: translate3d(4px, 0, 0);
+  }
+}
+
+/* https://github.com/daneden/animate.css/blob/master/source/attention_seekers/tada.css */
+@keyframes tada {
+  from {
+    transform: scale3d(1, 1, 1);
+  }
+
+  10%, 20% {
+    transform: scale3d(0.9, 0.9, 0.9) rotate3d(0, 0, 1, -3deg);
+  }
+
+  30%, 50%, 70%, 90% {
+    transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg);
+  }
+
+  40%, 60%, 80% {
+    transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg);
+  }
+
+  to {
+    transform: scale3d(1, 1, 1);
+  }
 }

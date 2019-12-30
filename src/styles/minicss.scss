@@ -4,6 +4,7 @@ html {
 
 * {
   box-sizing: inherit;
+  font-size: 1em;
 }
 
 @charset "UTF-8";
@@ -48,14 +49,11 @@ html, * {
   -webkit-text-size-adjust: 100%;
 }
 
-* {
-  font-size: 1rem;
-}
-
 body {
   margin: 0;
   color: var(--fore-color);
   background: var(--back-color);
+  font-size: 1rem;
 }
 
 details {
