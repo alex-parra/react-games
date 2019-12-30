@@ -8,8 +8,12 @@ const initialState = {
   targetTileKey: undefined,
   moves: 0,
   noMatch: [],
-  matched() { return this.tiles.filter(t => t.matched === true).length / 2; },
-  pairs() { return this.tiles.length / 2; },
+  matched() {
+    return this.tiles.filter(t => t.matched === true).length / 2;
+  },
+  pairs() {
+    return this.tiles.length / 2;
+  },
 };
 
 const makeGameTiles = (sideSize = 4) => {
@@ -48,25 +52,25 @@ const reducer = (state, { type, payload }) => {
   if (type === ACTION_FLIP_BY_KEY) {
     const { key: tileToFlipKey } = payload;
     const tileToFlip = state.tiles.find(tile => tile.key === tileToFlipKey);
-    if ( tileToFlip.flipped === true || tileToFlip.matched === true) return state;
+    if (tileToFlip.flipped === true || tileToFlip.matched === true) return state;
 
-    let tiles = state.tiles.map(tile => tile.key !== tileToFlipKey ? tile : { ...tile, flipped: true });
+    let tiles = state.tiles.map(tile => (tile.key !== tileToFlipKey ? tile : { ...tile, flipped: true }));
     const moves = state.moves + 1;
 
     const flippedTile = tiles.find(tile => tile.key === tileToFlipKey);
-    if( ! state.targetTileKey ) return { ...state, tiles, moves, targetTileKey: tileToFlipKey };
+    if (!state.targetTileKey) return { ...state, tiles, moves, targetTileKey: tileToFlipKey };
 
     const targetTile = tiles.find(tile => tile.key === state.targetTileKey);
     const isMatch = targetTile.icon === flippedTile.icon;
     const flippedPairKeys = [flippedTile.key, targetTile.key];
-    tiles = tiles.map(tile => flippedPairKeys.includes(tile.key) ? { ...tile, matched: isMatch } : tile);
+    tiles = tiles.map(tile => (flippedPairKeys.includes(tile.key) ? { ...tile, matched: isMatch } : tile));
 
     return { ...state, tiles, moves, targetTileKey: undefined, noMatch: isMatch ? [] : flippedPairKeys };
   }
 
   if (type === ACTION_RESET_NO_MATCH) {
     const { keys } = payload;
-    return { ...state, noMatch: [], tiles: state.tiles.map(tile => keys.includes(tile.key) ? resetTile(tile) : tile) };
+    return { ...state, noMatch: [], tiles: state.tiles.map(tile => (keys.includes(tile.key) ? resetTile(tile) : tile)) };
   }
 
   return state;

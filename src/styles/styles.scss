@@ -2,11 +2,13 @@
 
 button {
   margin: 0;
-  background-color: #4299E1;
+  background-color: #4299e1;
   color: #fff;
   font-weight: bold;
-  text-shadow: 1px 1px 0 rgba(#000, .5);
-  &:hover { background-color: #63B3ED; }
+  text-shadow: 1px 1px 0 rgba(#000, 0.5);
+  &:hover {
+    background-color: #63b3ed;
+  }
 }
 
 #root {
@@ -81,7 +83,7 @@ button {
       }
     }
     a.comingSoon {
-      background-color: #CBD5E0;
+      background-color: #cbd5e0;
       color: rgba(#000, 0.4);
       font-weight: normal;
     }

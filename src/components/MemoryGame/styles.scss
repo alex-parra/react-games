@@ -3,86 +3,207 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: #EDF2F7;
+  background-color: #edf2f7;
 }
 
 .MemoryGame .board {
-  display: flex; flex-direction: column; justify-content: center; width: 80vmin;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 80vmin;
   .topControls {
-    flex: 0 0 auto; display: flex; align-items: flex-end; justify-content: space-between; padding: 5px;
-    > div { flex: 0 0 auto; width: 25%; padding: 0 8px; font-size: 13px; }
-    > div:last-child { text-align: right; }
-    h1 { flex: 0 0 auto; font-size: 24px; margin: 0; }
+    flex: 0 0 auto;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    padding: 5px;
+    > div {
+      flex: 0 0 auto;
+      width: 25%;
+      padding: 0 8px;
+      font-size: 13px;
+    }
+    > div:last-child {
+      text-align: right;
+    }
+    h1 {
+      flex: 0 0 auto;
+      font-size: 24px;
+      margin: 0;
+    }
   }
 
-  .gameBoard { flex: 0 0 auto; height: 80vmin; background-color: #fff; border-radius: 4px; box-shadow: 0 0 3px rgba(#000, .25); }
+  .gameBoard {
+    flex: 0 0 auto;
+    height: 80vmin;
+    background-color: #fff;
+    border-radius: 4px;
+    box-shadow: 0 0 3px rgba(#000, 0.25);
+  }
   .bottomControls {
-    flex: 0 0 auto; min-height: 60px; display: flex; align-items: center; justify-content: center; font-size: 13px;
-    button { padding: 5px 1em; margin: 0; }
-    button:not(:hover) { opacity: .6; }
+    flex: 0 0 auto;
+    min-height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    button {
+      padding: 5px 1em;
+      margin: 0;
+    }
+    button:not(:hover) {
+      opacity: 0.6;
+    }
   }
 }
 
 .StartScreen {
-  display: grid; place-items: center; height: 100%;
-  > div { display: flex; flex-direction: column; justify-content: center; width: 80%; max-width: 300px; text-align: center; }
-  .levels {
-    padding: 5px; border: 1px solid #EDF2F7; margin-bottom: 20px; text-align: left; border-radius: 4px; background-color: #F7FAFC;
-    h4 { margin: 4px 6px; }
-    label { display: flex; align-items: center; cursor: pointer; }
-    label:hover { background-color: #90CDF4; }
-    label span { flex: 1; padding: 0 10px; }
+  display: grid;
+  place-items: center;
+  height: 100%;
+  > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 80%;
+    max-width: 300px;
+    text-align: center;
   }
-  button { transition: transform 100ms ease; }
-  button:hover { transform: scale(1.1) rotate(-1deg); }
+  .levels {
+    padding: 5px;
+    border: 1px solid #edf2f7;
+    margin-bottom: 20px;
+    text-align: left;
+    border-radius: 4px;
+    background-color: #f7fafc;
+    h4 {
+      margin: 4px 6px;
+    }
+    label {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+    }
+    label:hover {
+      background-color: #90cdf4;
+    }
+    label span {
+      flex: 1;
+      padding: 0 10px;
+    }
+  }
+  button {
+    transition: transform 100ms ease;
+  }
+  button:hover {
+    transform: scale(1.1) rotate(-1deg);
+  }
 }
 
 .Tiles {
-  display: grid; grid: repeat(var(--tiles, 4), 1fr) / repeat(var(--tiles, 4), 1fr);
-  grid-gap: 5px; padding: 5px; height: 100%;
+  display: grid;
+  grid: repeat(var(--tiles, 4), 1fr) / repeat(var(--tiles, 4), 1fr);
+  grid-gap: 5px;
+  padding: 5px;
+  height: 100%;
 
   .Tile {
-    position: relative; text-align: center; perspective: 500px;
-    .inner { height: 100%; transform-style: preserve-3d; transition: transform 500ms ease; cursor: pointer; }
+    position: relative;
+    text-align: center;
+    perspective: 500px;
+    .inner {
+      height: 100%;
+      transform-style: preserve-3d;
+      transition: transform 500ms ease;
+      cursor: pointer;
+    }
     .inner b,
-    .inner i { position: absolute; top: 0; left: 0; right: 0; bottom: 0; display: grid; place-items: center; backface-visibility: hidden; font-size: 4vmin; border-radius: 2px; }
-    .inner b { background-color: #F7FAFC; color: rgba(#000, .1); transition: all 150ms ease; }
-    .inner i { transform: rotateY(180deg); background-color: #2B6CB0; color: rgba(#fff, .9); }
-    &:hover .inner b { background-color: #EDF2F7; box-shadow: inset 0 0 6px rgba(#000, .2); }
+    .inner i {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      display: grid;
+      place-items: center;
+      backface-visibility: hidden;
+      font-size: 4vmin;
+      border-radius: 2px;
+    }
+    .inner b {
+      background-color: #f7fafc;
+      color: rgba(#000, 0.1);
+      transition: all 150ms ease;
+    }
+    .inner i {
+      transform: rotateY(180deg);
+      background-color: #2b6cb0;
+      color: rgba(#fff, 0.9);
+    }
+    &:hover .inner b {
+      background-color: #edf2f7;
+      box-shadow: inset 0 0 6px rgba(#000, 0.2);
+    }
   }
 
-  .Tile.flipped .inner { transform: rotateY(180deg); }
-  .Tile.matched { animation: tada 0.82s cubic-bezier(.36,.07,.19,.97) both; z-index: 99; }
-  .Tile.matched .inner i { background-color: #38A169; box-shadow: 0 0 4px rgba(#000, .3); }
-  .Tile.no-match { animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) 400ms both; }
-  .Tile.no-match .inner i { animation: tileNoMatch 500ms ease 100ms forwards; }
+  .Tile.flipped .inner {
+    transform: rotateY(180deg);
+  }
+  .Tile.matched {
+    animation: tada 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+    z-index: 99;
+  }
+  .Tile.matched .inner i {
+    background-color: #38a169;
+    box-shadow: 0 0 4px rgba(#000, 0.3);
+  }
+  .Tile.no-match {
+    animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) 400ms both;
+  }
+  .Tile.no-match .inner i {
+    animation: tileNoMatch 500ms ease 100ms forwards;
+  }
 }
 
 .Finished {
-  display: grid; place-items: center; height: 100%; text-align: center;
-  div { margin: 10px 0 20px; }
+  display: grid;
+  place-items: center;
+  height: 100%;
+  text-align: center;
+  div {
+    margin: 10px 0 20px;
+  }
 }
 
 @keyframes tileNoMatch {
-  0% { background-color: #2B6CB0; }
-  100% { background-color: #C53030; }
+  0% {
+    background-color: #2b6cb0;
+  }
+  100% {
+    background-color: #c53030;
+  }
 }
 
 /* https://css-tricks.com/snippets/css/shake-css-keyframe-animation/ */
 @keyframes shake {
-  10%, 90% {
+  10%,
+  90% {
     transform: translate3d(-1px, 0, 0);
   }
 
-  20%, 80% {
+  20%,
+  80% {
     transform: translate3d(2px, 0, 0);
   }
 
-  30%, 50%, 70% {
+  30%,
+  50%,
+  70% {
     transform: translate3d(-4px, 0, 0);
   }
 
-  40%, 60% {
+  40%,
+  60% {
     transform: translate3d(4px, 0, 0);
   }
 }
@@ -93,15 +214,21 @@
     transform: scale3d(1, 1, 1);
   }
 
-  10%, 20% {
+  10%,
+  20% {
     transform: scale3d(0.9, 0.9, 0.9) rotate3d(0, 0, 1, -3deg);
   }
 
-  30%, 50%, 70%, 90% {
+  30%,
+  50%,
+  70%,
+  90% {
     transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg);
   }
 
-  40%, 60%, 80% {
+  40%,
+  60%,
+  80% {
     transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg);
   }
 

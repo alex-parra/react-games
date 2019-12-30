@@ -54,16 +54,12 @@ const icons = [
 const POSSIBLE_SIZES = (() => {
   const maxSize = Math.sqrt(icons.length * 2);
   const possibleSizes = [];
-  for( let i = 2; i <= maxSize; i += 2 ) {
+  for (let i = 2; i <= maxSize; i += 2) {
     possibleSizes.push(i);
   }
   return possibleSizes;
 })();
 
-const DEFAULT_SIDE_SIZE = POSSIBLE_SIZES[ Math.ceil(POSSIBLE_SIZES.length / 2) - 1 ];
+const DEFAULT_SIDE_SIZE = POSSIBLE_SIZES[Math.ceil(POSSIBLE_SIZES.length / 2) - 1];
 
-export {
-  icons,
-  POSSIBLE_SIZES,
-  DEFAULT_SIDE_SIZE,
-};
+export { icons, POSSIBLE_SIZES, DEFAULT_SIDE_SIZE };

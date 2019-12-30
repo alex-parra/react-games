@@ -6,7 +6,7 @@ const StartScreen = props => {
   const onRadioClick = ev => {
     ev.target.blur();
     return onSideChange(Number(ev.target.value));
-  }
+  };
 
   return (
     <div className="StartScreen">
@@ -17,9 +17,11 @@ const StartScreen = props => {
             return (
               <label key={size}>
                 <input type="radio" value={size} checked={sideSize === size} onChange={onRadioClick}></input>
-                <span>{size}x{size}</span>
+                <span>
+                  {size}x{size}
+                </span>
               </label>
-            )
+            );
           })}
         </div>
         <button onClick={props.onStart}>Start Game</button>

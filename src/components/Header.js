@@ -7,7 +7,9 @@ const Header = props => {
       <Link to="/" className="logo">
         <h1>React Games</h1>
       </Link>
-      <a href="https://github.com/alex-parra" target="_blank" rel="noopener noreferrer">by Alex Parra</a>
+      <a href="https://github.com/alex-parra" target="_blank" rel="noopener noreferrer">
+        by Alex Parra
+      </a>
     </header>
   );
 };

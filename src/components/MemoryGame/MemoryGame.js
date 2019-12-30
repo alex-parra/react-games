@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 
 import StartScreen from './StartScreen';
 import PlayScreen from './PlayScreen';
@@ -31,26 +31,29 @@ const MemoryGame = () => {
     setIsPlaying(false);
   };
 
-  const changeSize = (size) => {
-    if( POSSIBLE_SIZES.includes(size) ) setSideSize(size);
-  }
+  const changeSize = size => {
+    if (POSSIBLE_SIZES.includes(size)) setSideSize(size);
+  };
 
   useEffect(() => {
     dispatch(actions.init({ sideSize }));
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [sideSize]);
 
-  useInterval(() => {
-    setElapsed(parseInt(Date.now() / 1000) - gameState.startTime);
-  }, gameOngoing ? 1000 : null);
+  useInterval(
+    () => {
+      setElapsed(parseInt(Date.now() / 1000) - gameState.startTime);
+    },
+    gameOngoing ? 1000 : null
+  );
 
   const onTileClick = clickedTile => {
     dispatch(actions.flipByKey({ key: clickedTile.key, flip: true }));
   };
 
   useEffect(() => {
-    if( gameState.noMatch.length ) setTimeout(() => dispatch(actions.resetNoMatch({keys: gameState.noMatch})), 1500);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    if (gameState.noMatch.length) setTimeout(() => dispatch(actions.resetNoMatch({ keys: gameState.noMatch })), 1500);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [gameState.noMatch]);
 
   return (
@@ -59,7 +62,9 @@ const MemoryGame = () => {
         <div className="topControls">
           <div>Elapsed: {secondsToHms(elapsed)}</div>
           <h1>Memory Game</h1>
-          <div>Matched: {gameState.matched()} / {gameState.pairs()}</div>
+          <div>
+            Matched: {gameState.matched()} / {gameState.pairs()}
+          </div>
         </div>
         <div className="gameBoard">
           {!isPlaying && <StartScreen onStart={startGame} sideSize={sideSize} sideSizes={POSSIBLE_SIZES} onSideChange={changeSize} />}
