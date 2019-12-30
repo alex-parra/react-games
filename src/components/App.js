@@ -1,20 +1,23 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
-import DeadEnd from './DeadEnd';
 import Header from './Header';
 import Home from './Home';
-import MemoryGame from './MemoryGame/MemoryGame';
+
+const MemoryGame = React.lazy(() => import('./MemoryGame/MemoryGame'));
+const DeadEnd = React.lazy(() => import('./DeadEnd'));
 
 const App = props => {
   return (
     <Router>
       <Header />
-      <Switch>
-        <Route path="/" exact component={Home} />
-        <Route path="/memory-game" component={MemoryGame} />
-        <Route path="*" component={DeadEnd} />
-      </Switch>
+      <React.Suspense fallback={'Loading...'}>
+        <Switch>
+          <Route path="/" exact component={Home} />
+          <Route path="/memory-game" component={MemoryGame} />
+          <Route path="*" component={DeadEnd} />
+        </Switch>
+      </React.Suspense>
     </Router>
   );
 };
