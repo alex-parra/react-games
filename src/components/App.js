@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Header from './Header';
 import Home from './Home';
 
-const MemoryGame = React.lazy(() => import('./MemoryGame/MemoryGame'));
+import games from '../gamesRoutes';
 const DeadEnd = React.lazy(() => import('./DeadEnd'));
 
 const App = props => {
@@ -14,7 +14,9 @@ const App = props => {
       <React.Suspense fallback={'Loading...'}>
         <Switch>
           <Route path="/" exact component={Home} />
-          <Route path="/memory-game" component={MemoryGame} />
+          {games.map(g => (
+            <Route key={g.slug} path={`/${g.slug}`} component={g.component} />
+          ))}
           <Route path="*" component={DeadEnd} />
         </Switch>
       </React.Suspense>

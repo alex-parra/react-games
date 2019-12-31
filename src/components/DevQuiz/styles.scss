@@ -1,0 +1,25 @@
+.DevQuiz {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #edf2f7;
+
+  .StartScreen {
+    max-width: 600px; margin: 40px auto; text-align: center; padding-bottom: 80px;
+    h1 { margin: 0; }
+    p { font-size: 20px; margin: 20px 0 40px; }
+    button { min-width: 100px; }
+  }
+
+  .PlayScreen {
+    text-align: center;
+  }
+
+  .Question {
+    max-width: 800px; margin: 40px auto 80px; padding: 20px; text-align: left; background-color: #fff; border-radius: 4px; box-shadow: 0 2px 5px rgba(#000, .25);
+    .topic { font-size: 14px; color: #666; }
+    p { font-size: 30px; padding: 10px 0 40px; margin: 0; }
+    .options { display: grid; grid: auto / repeat(2, 1fr); list-style: none; margin: 0; padding: 0; }
+  }
+}
